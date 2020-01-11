@@ -8,16 +8,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded', function(xPlayer)
-  PlayerData = xPlayer   
-end)
-
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
-  PlayerData.job = job
-end)
-
 local Nightvision = false
 function setNightvision(flag)
   Nightvision = flag
@@ -29,7 +19,19 @@ AddEventHandler("Nightvision", function()
 	if ( Nightvision ) then
 		SetNightvision(true)
 		Nightvision = false
-		--TriggerEvent('night-thermal')
+		local animDict = 'mp_masks@on_foot'
+		local animName = 'put_on_mask'
+
+		RequestAnimDict(animDict)
+
+		while not HasAnimDictLoaded(animDict) do
+			Citizen.Wait(10)
+		end
+
+		TaskPlayAnim(GetPlayerPed(-1), animDict, animName, 8.0, -8.0, -1, 50, 0, false, false, false)
+
+			Citizen.Wait(800)
+
 		TriggerEvent('skinchanger:getSkin', function(skin)
 			if skin.sex == 0 then
 				local clothesSkin = {
@@ -46,6 +48,19 @@ AddEventHandler("Nightvision", function()
 	else
 		SetNightvision(false)
 		Nightvision = true
+		local animDict = 'missfbi4'
+		local animName = 'takeoff_mask'
+
+		RequestAnimDict(animDict)
+
+		while not HasAnimDictLoaded(animDict) do
+			Citizen.Wait(10)
+		end
+
+		TaskPlayAnim(GetPlayerPed(-1), animDict, animName, 8.0, -8.0, -1, 50, 0, false, false, false)
+
+			Citizen.Wait(1000)
+
 		TriggerEvent('skinchanger:getSkin', function(skin)
 			if skin.sex == 0 then
 				local clothesSkin = {
@@ -73,6 +88,19 @@ AddEventHandler("Thermalvision", function()
 	if ( Thermalvision ) then
 		SetSeethrough(true)
 		Thermalvision = false
+		local animDict = 'mp_masks@on_foot'
+		local animName = 'put_on_mask'
+
+		RequestAnimDict(animDict)
+
+		while not HasAnimDictLoaded(animDict) do
+			Citizen.Wait(10)
+		end
+
+		TaskPlayAnim(GetPlayerPed(-1), animDict, animName, 8.0, -8.0, -1, 50, 0, false, false, false)
+
+			Citizen.Wait(800)
+
 		TriggerEvent('skinchanger:getSkin', function(skin)
 			if skin.sex == 0 then
 				local clothesSkin = {
@@ -90,6 +118,19 @@ AddEventHandler("Thermalvision", function()
 	else
 		SetSeethrough(false)
 		Thermalvision = true
+		local animDict = 'missfbi4'
+		local animName = 'takeoff_mask'
+
+		RequestAnimDict(animDict)
+
+		while not HasAnimDictLoaded(animDict) do
+			Citizen.Wait(10)
+		end
+
+		TaskPlayAnim(GetPlayerPed(-1), animDict, animName, 8.0, -8.0, -1, 50, 0, false, false, false)
+
+			Citizen.Wait(1000)
+
 		TriggerEvent('skinchanger:getSkin', function(skin)
 			if skin.sex == 0 then
 				local clothesSkin = {
