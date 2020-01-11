@@ -1,12 +1,11 @@
--- Manifest Version
-resource_manifest_version '77731fab-63ca-442c-a67b-abc70f28dfa5'
+resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
 
-description 'ESX Nightvision and Thermalvision'
+description 'ESX Buyable Armour'
 
 server_scripts {
-	'server/main.lua'
+	'server.lua'
 }
 
 client_scripts {
-	'client/main.lua'
+	'client.lua'
 }
